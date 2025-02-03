@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdvhx58up6h3"]
+
+[ext_resource type="PackedScene" uid="uid://d2jb00c1a2i44" path="res://levels/objects/breakable_decor/dropped_generator.tscn" id="1_71h2u"]
+[ext_resource type="Texture2D" uid="uid://cnhs12wnd5egf" path="res://images/SpawnerBadMan.png" id="2_2npfq"]
+[ext_resource type="PackedScene" uid="uid://dnggijywjhkuf" path="res://levels/objects/BadMan.tscn" id="2_40rrd"]
+
+[node name="SpawnerBadMan" instance=ExtResource("1_71h2u")]
+drop = Array[PackedScene]([ExtResource("2_40rrd")])
+col = Vector2(1, 10)
+ranomise_pos = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_2npfq")

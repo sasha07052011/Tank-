@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://gwcrvoixnphq"]
+
+[ext_resource type="PackedScene" uid="uid://cqcyu5t16erk2" path="res://levels/objects/chips/DroppedChip.tscn" id="1_h14vs"]
+
+[node name="DroppedChip" instance=ExtResource("1_h14vs")]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=16 format=4 uid="uid://b4iu3pcc13bc2"]
+
+[ext_resource type="Script" path="res://levels/scripts/settings.gd" id="1_27bco"]
+[ext_resource type="TileSet" uid="uid://5pdac658i1hj" path="res://levels/worlds/Tilesets/tileset1.tres" id="1_yf3c4"]
+[ext_resource type="Texture2D" uid="uid://bcu238uxtrnt4" path="res://images/tank2.png" id="3_7wvqv"]
+[ext_resource type="PackedScene" uid="uid://3vtfecgfnkhq" path="res://levels/objects/water.tscn" id="3_72pp8"]
+[ext_resource type="Shader" path="res://levels/scripts/shaders/tank2.gdshader" id="4_swmky"]
+[ext_resource type="Texture2D" uid="uid://bk8hygf27whf6" path="res://images/tank_corpus.png" id="5_8ufp5"]
+[ext_resource type="Texture2D" uid="uid://b6fbo4543gxmu" path="res://images/ui_Tankъ.png" id="6_muyn3"]
+[ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="7_5235d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3pae"]
+shader = ExtResource("4_swmky")
+shader_parameter/first_color = Color(1, 1, 1, 1)
+shader_parameter/second_color = Color(0, 1, 0, 1)
+shader_parameter/tird_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_coof = 0.4
+shader_parameter/randbow = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcnis"]
+atlas = ExtResource("6_muyn3")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m4m0"]
+atlas = ExtResource("6_muyn3")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u60mm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fc0d"]
+atlas = ExtResource("6_muyn3")
+region = Rect2(34, 57, 12, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56jub"]
+atlas = ExtResource("6_muyn3")
+region = Rect2(18, 57, 12, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qphot"]
+font = ExtResource("7_5235d")
+font_size = 51
+
+[node name="Settings" type="Node2D" node_paths=PackedStringArray("bg")]
+script = ExtResource("1_27bco")
+bg = NodePath("CanvasLayer/Sprite2D")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAABAAQAAAAGAAQAAAABAAUAAAAGAAQAAAABAAYAAAAGAAQAAAACAAYAAAAGAAQAAAACAAUAAAAGAAQAAAACAAQAAAAFAAQAAAADAAUAAAAGAAQAAAADAAYAAAAFAAQAAAADAAQAAAAFAAQAAAAEAAQAAAAGAAQAAAAEAAUAAAAGAAQAAAAEAAYAAAAFAAQAAAAFAAYAAAAFAAQAAAAFAAUAAAAGAAQAAAAFAAQAAAAGAAQAAAA=")
+tile_set = ExtResource("1_yf3c4")
+
+[node name="Water" parent="." instance=ExtResource("3_72pp8")]
+position = Vector2(208.007, 631.819)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAQAAAAAAAEAAAACAAQAAAAAAAIAAAACAAUAAAAAAAMAAAADAAAAAAAAAAQAAAACAAMAAAAAAAUAAAACAAQAAAAAAAYAAAACAAQAAAAFAAYAAAAJAAMAAAAGAAYAAAAAAAMAAAAHAAUAAAADAAAAAAAIAAUAAAADAAAAAAAIAAYAAAABAAMAAAAJAAYAAAABAAMAAAAKAAYAAAABAAMAAAALAAYAAAADAAMAAAALAAUAAAAAAAQAAAALAAQAAAAAAAQAAAALAAMAAAAAAAQAAAALAAIAAAAAAAQAAAALAAEAAAAAAAQAAAALAAAAAAAEAAQAAAAKAAAAAAABAAUAAAAJAAAAAAABAAUAAAAIAAAAAAABAAUAAAAHAAAAAAABAAUAAAAGAAAAAAABAAUAAAAFAAAAAAABAAUAAAAEAAAAAAABAAUAAAADAAAAAAABAAUAAAACAAAAAAABAAUAAAABAAAAAAABAAUAAAABAAEAAAADAAAAAAABAAIAAAADAAAAAAACAAEAAAADAAAAAAABAAMAAAADAAAAAAABAAQAAAAHAAIAAAACAAMAAAADAAAAAAACAAIAAAADAAAAAAADAAEAAAADAAAAAAADAAIAAAADAAAAAAACAAQAAAAIAAIAAAADAAMAAAADAAAAAAAEAAIAAAADAAAAAAAEAAEAAAADAAAAAAADAAQAAAAIAAIAAAAEAAMAAAADAAAAAAAFAAIAAAADAAAAAAAGAAEAAAADAAAAAAAEAAQAAAAIAAIAAAAFAAUAAAAJAAMAAAAGAAQAAAADAAAAAAAGAAMAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAAJAAIAAAAHAAQAAAADAAAAAAAHAAMAAAADAAAAAAAHAAYAAAABAAMAAAAGAAUAAAADAAAAAAAGAAIAAAADAAAAAAAFAAEAAAADAAAAAAAHAAEAAAADAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAIAAAAJAAMAAAABAAIAAAAJAAIAAAABAAEAAAAJAAEAAAABAAAAAAAKAAIAAAACAAEAAAAKAAEAAAACAAAAAAAHAAIAAAADAAAAAAAIAAQAAAADAAAAAAAJAAQAAAADAAAAAAAKAAMAAAACAAIAAAAKAAQAAAADAAAAAAAKAAUAAAADAAAAAAAJAAUAAAADAAAAAAABAAUAAAAHAAMAAAABAAYAAAAHAAMAAAA=")
+tile_set = ExtResource("1_yf3c4")
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+light_mask = 0
+offset_left = 465.476
+offset_top = 51.0
+offset_right = 763.476
+offset_bottom = 610.0
+color = Color(1, 0.360784, 0, 1)
+edit_alpha = false
+picker_shape = 1
+color_modes_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="Tank2" type="Sprite2D" parent="."]
+position = Vector2(330.713, 227.554)
+scale = Vector2(6, 6)
+texture = ExtResource("3_7wvqv")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="TankCorpus" type="Sprite2D" parent="Tank2"]
+material = SubResource("ShaderMaterial_r3pae")
+position = Vector2(0, -1)
+texture = ExtResource("5_8ufp5")
+
+[node name="menub" type="TextureButton" parent="."]
+light_mask = 0
+offset_left = 21.2224
+offset_top = 49.1294
+offset_right = 37.2224
+offset_bottom = 65.1294
+scale = Vector2(6.0979, 6.0979)
+texture_normal = SubResource("AtlasTexture_hcnis")
+texture_pressed = SubResource("AtlasTexture_4m4m0")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(2156.01, -317.892)
+scale = Vector2(100, 100)
+texture = ExtResource("6_muyn3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 48, 16, 16)
+
+[node name="simple_water" type="CheckButton" parent="."]
+offset_left = 367.811
+offset_top = 486.361
+offset_right = 391.811
+offset_bottom = 500.361
+scale = Vector2(6.01328, 6.01328)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u60mm")
+theme_override_icons/checked = SubResource("AtlasTexture_5fc0d")
+theme_override_icons/unchecked = SubResource("AtlasTexture_56jub")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 88.7157
+offset_top = 503.109
+offset_right = 394.716
+offset_bottom = 545.109
+text = "Простая вода"
+label_settings = SubResource("LabelSettings_qphot")
+
+[connection signal="pressed" from="menub" to="." method="_on_menub_pressed"]

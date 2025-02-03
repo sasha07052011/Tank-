@@ -1,0 +1,158 @@
+[gd_scene load_steps=21 format=4 uid="uid://bfj6kkj6qxbmy"]
+
+[ext_resource type="Script" path="res://levels/scripts/menu.gd" id="1_mklpo"]
+[ext_resource type="TileSet" uid="uid://5pdac658i1hj" path="res://levels/worlds/Tilesets/tileset1.tres" id="2_e556x"]
+[ext_resource type="PackedScene" uid="uid://brlwnf83og270" path="res://levels/objects/player.tscn" id="2_uarvc"]
+[ext_resource type="PackedScene" uid="uid://bfdw2nrfgktrt" path="res://levels/objects/target.tscn" id="3_bc0vr"]
+[ext_resource type="PackedScene" uid="uid://3vtfecgfnkhq" path="res://levels/objects/water.tscn" id="3_btsa1"]
+[ext_resource type="PackedScene" uid="uid://ht235lf7wgnx" path="res://levels/objects/bonus1.tscn" id="5_ka0er"]
+[ext_resource type="Texture2D" uid="uid://b6fbo4543gxmu" path="res://images/ui_Tankъ.png" id="6_8o8u1"]
+[ext_resource type="PackedScene" uid="uid://bdvhx58up6h3" path="res://levels/objects/breakable_decor/SpawnerBadMan.tscn" id="7_pr64t"]
+[ext_resource type="PackedScene" uid="uid://f6cvb1dyiu6t" path="res://levels/objects/bonus2.tscn" id="8_q7h6g"]
+[ext_resource type="Shader" path="res://levels/scripts/shaders/tank2.gdshader" id="8_vll3u"]
+[ext_resource type="Texture2D" uid="uid://cfxiawmho6qkw" path="res://images/logo2.png" id="9_ssprx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tr6r"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3dsg"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grahw"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nejo6"]
+shader = ExtResource("8_vll3u")
+shader_parameter/first_color = Color(1, 1, 1, 1)
+shader_parameter/second_color = Color(0, 1, 0, 1)
+shader_parameter/tird_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_coof = 0.4
+shader_parameter/randbow = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxdfp"]
+atlas = ExtResource("9_ssprx")
+region = Rect2(3, 17, 57, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h4o0"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt7sj"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ly5w"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obduu"]
+atlas = ExtResource("6_8o8u1")
+region = Rect2(48, 64, 16, 16)
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_mklpo")
+
+[node name="background" type="Node2D" parent="."]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+light_mask = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="background"]
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAGAAQAAAAGAAQAAAAGAAUAAAAGAAQAAAAGAAYAAAAGAAQAAAAHAAYAAAAGAAQAAAAHAAUAAAAFAAQAAAAHAAQAAAAGAAQAAAAIAAQAAAAGAAQAAAAIAAUAAAAGAAQAAAAIAAYAAAAFAAQAAAAJAAUAAAAFAAQAAAAJAAQAAAAGAAQAAAAJAAYAAAAFAAQAAAAKAAYAAAAFAAQAAAAKAAUAAAAFAAQAAAALAAUAAAAGAAQAAAALAAQAAAAGAAQAAAALAAYAAAAGAAQAAAAKAAQAAAAGAAQAAAAFAAcAAAAGAAQAAAAGAAcAAAAGAAQAAAAHAAcAAAAGAAQAAAAIAAcAAAAGAAQAAAAJAAcAAAAGAAQAAAAKAAcAAAAFAAQAAAALAAcAAAAGAAQAAAAMAAcAAAAGAAQAAAAMAAYAAAAGAAQAAAAMAAUAAAAGAAQAAAAMAAQAAAAGAAQAAAA=")
+tile_set = ExtResource("2_e556x")
+
+[node name="Water" parent="background" instance=ExtResource("3_btsa1")]
+position = Vector2(862, 476)
+scale = Vector2(0.365671, 0.365671)
+water_color = Color(0, 0.384314, 1, 1)
+waves_size = 3.0
+
+[node name="TileMap" type="TileMap" parent="background"]
+scale = Vector2(6, 6)
+tile_set = ExtResource("2_e556x")
+format = 2
+layer_0/tile_data = PackedInt32Array(65539, 131072, 5, 3, 131072, 4, 65538, 65536, 5, 65537, 65536, 5, 65536, 65536, 5, 0, 65536, 4, 1, 65536, 4, 2, 65536, 4, 7, 65536, 0, 6, 0, 0, 65543, 65536, 1, 65545, 131072, 1, 9, 131072, 0, 8, 65536, 0, 65544, 262144, 0, 131081, 131072, 2, 131080, 65536, 2, 65542, 0, 1, 131078, 0, 2, 131079, 65536, 2, 327680, 196608, 1, 327681, 196608, 1, 327682, 196608, 1, 327683, 196608, 1, 131072, 196608, 1, 131073, 196608, 1, 131074, 196608, 1, 131075, 196608, 1, 65540, 196608, 0, 65541, 196608, 0, 5, 196608, 0, 4, 196608, 0, 131076, 196608, 0, 131077, 196608, 0, 196613, 196608, 0, 196612, 196608, 0, 262148, 196608, 0, 327684, 196608, 0, 327685, 196608, 0, 327686, 458752, 3, 262149, 196608, 0, 262150, 458752, 2, 196614, 196608, 0, 196615, 196608, 0, 11, 196608, 0, 131083, 196608, 0, 196619, 196608, 0, 65547, 196608, 0, 10, 196608, 0, 65546, 196608, 0, 131082, 196608, 0, 196618, 196608, 0, 196617, 196608, 0, 196616, 196608, 0, 393220, 196608, 0, 393221, 196608, 0, 393222, 458752, 3, 393219, 196608, 0, 393218, 196608, 0, 393217, 196608, 0, 393216, 196608, 0, 196608, 196608, 0, 262144, 196608, 0, 262145, 196608, 0, 196609, 196608, 0, 196610, 196608, 0, 262146, 196608, 0, 196611, 196608, 0, 262147, 196608, 0, 262151, 524288, 2, 262152, 524288, 2, 262153, 524288, 2, 262154, 524288, 2, 262155, 524288, 2)
+
+[node name="target" parent="background" instance=ExtResource("3_bc0vr")]
+position = Vector2(1040, 145)
+
+[node name="bonus1" parent="background" instance=ExtResource("5_ka0er")]
+position = Vector2(466, 118)
+
+[node name="TextureButton" type="TextureButton" parent="background"]
+offset_left = 721.0
+offset_top = 539.0
+offset_right = 737.0
+offset_bottom = 555.0
+scale = Vector2(5.4992, 5.56348)
+texture_normal = SubResource("AtlasTexture_1tr6r")
+
+[node name="SpawnerBadMan" parent="background" instance=ExtResource("7_pr64t")]
+position = Vector2(904, 373)
+
+[node name="bonus2" parent="background" instance=ExtResource("8_q7h6g")]
+position = Vector2(741, 350)
+
+[node name="Player" parent="background" instance=ExtResource("2_uarvc")]
+position = Vector2(189, 383)
+light_energy = 5
+menu = true
+
+[node name="start" type="TextureButton" parent="."]
+light_mask = 2
+offset_left = 464.0
+offset_top = 349.0
+offset_right = 496.0
+offset_bottom = 365.0
+scale = Vector2(6.25237, 6.25237)
+texture_normal = SubResource("AtlasTexture_t3dsg")
+texture_pressed = SubResource("AtlasTexture_grahw")
+
+[node name="Sprite2D" type="TextureButton" parent="."]
+light_mask = 2
+material = SubResource("ShaderMaterial_nejo6")
+offset_left = 280.49
+offset_top = 8.02026
+offset_right = 337.49
+offset_bottom = 35.0203
+scale = Vector2(10.1875, 10.1875)
+texture_normal = SubResource("AtlasTexture_gxdfp")
+
+[node name="exit" type="TextureButton" parent="."]
+light_mask = 2
+offset_left = 461.0
+offset_top = 459.0
+offset_right = 493.0
+offset_bottom = 475.0
+scale = Vector2(6.548, 6.548)
+texture_normal = SubResource("AtlasTexture_2h4o0")
+texture_pressed = SubResource("AtlasTexture_qt7sj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1707.49, -324.43)
+scale = Vector2(100, 100)
+texture = ExtResource("6_8o8u1")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 48, 16, 16)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+light_mask = 0
+offset_left = 362.0
+offset_top = 413.0
+offset_right = 378.0
+offset_bottom = 429.0
+scale = Vector2(5.21951, 5.21951)
+texture_normal = SubResource("AtlasTexture_7ly5w")
+texture_pressed = SubResource("AtlasTexture_obduu")
+
+[connection signal="pressed" from="background/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Sprite2D" to="." method="_on_sprite_2d_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

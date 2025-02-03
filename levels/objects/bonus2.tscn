@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://f6cvb1dyiu6t"]
+
+[ext_resource type="Script" path="res://levels/scripts/bonus2.gd" id="1_o4fu6"]
+[ext_resource type="Texture2D" uid="uid://bru4lgpmluqgj" path="res://images/bonus2.png" id="2_kn04k"]
+
+[sub_resource type="Gradient" id="Gradient_fb1i4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ji88g"]
+gradient = SubResource("Gradient_fb1i4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.873418, 0.161392)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ocjms"]
+radius = 64.7611
+
+[node name="bonus2" type="Node2D"]
+script = ExtResource("1_o4fu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_kn04k")
+region_rect = Rect2(48, 80, 16, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(3.625, 3.625)
+color = Color(0.968627, 0, 0.0745098, 1)
+energy = 10.0
+texture = SubResource("GradientTexture2D_ji88g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ocjms")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

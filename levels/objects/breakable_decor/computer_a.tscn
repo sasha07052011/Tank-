@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnkxtbuhiadjp"]
+
+[ext_resource type="PackedScene" uid="uid://d2jb00c1a2i44" path="res://levels/objects/breakable_decor/dropped_generator.tscn" id="1_1kuym"]
+[ext_resource type="PackedScene" uid="uid://gwcrvoixnphq" path="res://levels/objects/chips/basic_chip.tscn" id="2_1gatj"]
+[ext_resource type="Texture2D" uid="uid://beiwkmc15x8fq" path="res://images/decor_tankъ.png" id="2_2d8ac"]
+[ext_resource type="PackedScene" uid="uid://c1kx1ec5cwbog" path="res://levels/objects/chips/control_chip.tscn" id="2_70d5g"]
+[ext_resource type="PackedScene" uid="uid://bgb865lcuf8s7" path="res://levels/objects/chips/processor.tscn" id="3_dunk6"]
+
+[node name="comp" instance=ExtResource("1_1kuym")]
+drop = Array[PackedScene]([ExtResource("2_70d5g"), ExtResource("3_dunk6"), ExtResource("2_1gatj")])
+type_chip = -1
+ranomise_pos = true
+kill_anim_var = 3
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_2d8ac")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 23)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+animation = &"default"

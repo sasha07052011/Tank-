@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn6xuxvgvjdib"]
+
+[ext_resource type="Script" path="res://levels/scripts/mechanic_wall.gd" id="1_pv7yt"]
+[ext_resource type="Texture2D" uid="uid://dis12pd5awllb" path="res://images/mwall.png" id="2_n1dxx"]
+[ext_resource type="Texture2D" uid="uid://dmtphw53yqpom" path="res://images/meshanic_walls.png" id="4_hmt8d"]
+[ext_resource type="AudioStream" uid="uid://b5ri0rpjkj7uj" path="res://sounds/24f110d27ad0929.mp3" id="4_tgmwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7shyn"]
+size = Vector2(16, 16)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eyjlb"]
+points = PackedVector2Array(-15, -7, 15, -7, 15, 7, -15, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edb4c"]
+size = Vector2(30, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hxne"]
+atlas = ExtResource("4_hmt8d")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4opk6"]
+atlas = ExtResource("4_hmt8d")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxr7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hxne")
+}],
+"loop": true,
+"name": &"locked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4opk6")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[node name="MechanicWall" type="StaticBody2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_pv7yt")
+
+[node name="wall" type="Sprite2D" parent="."]
+position = Vector2(-7, -8)
+texture = ExtResource("2_n1dxx")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 30, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_7shyn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(8, -1)
+shape = SubResource("ConvexPolygonShape2D_eyjlb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_edb4c")
+debug_color = Color(0.886275, 0.6, 0.701961, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dxr7n")
+animation = &"locked"
+
+[node name="ok" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tgmwl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

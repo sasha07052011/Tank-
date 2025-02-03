@@ -1,0 +1,473 @@
+[gd_scene load_steps=48 format=3 uid="uid://brlwnf83og270"]
+
+[ext_resource type="Texture2D" uid="uid://bk8hygf27whf6" path="res://images/tank_corpus.png" id="2_6lkvp"]
+[ext_resource type="Script" path="res://levels/scripts/Player.gd" id="2_ldwi6"]
+[ext_resource type="Texture2D" uid="uid://bcu238uxtrnt4" path="res://images/tank2.png" id="3_cdjbp"]
+[ext_resource type="Shader" path="res://levels/scripts/shaders/tank2.gdshader" id="3_xteyw"]
+[ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="4_3rnac"]
+[ext_resource type="Texture2D" uid="uid://dnwu71jsnxhou" path="res://images/effects/explosion4.png" id="4_i2j51"]
+[ext_resource type="Texture2D" uid="uid://b6fbo4543gxmu" path="res://images/ui_Tankъ.png" id="4_x6egi"]
+[ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="5_sai0n"]
+[ext_resource type="AudioStream" uid="uid://dgj1jpw506786" path="res://sounds/zvuk-vzryva-dlya-video.mp3" id="5_xo0f1"]
+[ext_resource type="Script" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="6_2mv6u"]
+[ext_resource type="PackedScene" uid="uid://cjivswfe4fuay" path="res://levels/worlds/DebugConsole.tscn" id="7_m8n54"]
+[ext_resource type="Texture2D" uid="uid://dqrlxycu4s54b" path="res://images/Chipes.png" id="10_6ffm1"]
+[ext_resource type="Script" path="res://levels/scripts/player_chips_icons.gd" id="10_o1phm"]
+[ext_resource type="Texture2D" uid="uid://bru4lgpmluqgj" path="res://images/bonus2.png" id="11_b45wg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nfye"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(34, 66, 10, 13)
+
+[sub_resource type="Curve" id="Curve_5h6sl"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -10.6761), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6ptbr"]
+colors = PackedColorArray(7.70092e-07, 0.54509, 0.818257, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_0yhu5"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dimc1"]
+gradient = SubResource("Gradient_0yhu5")
+width = 1024
+height = 1024
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.490798, 0.5)
+fill_to = Vector2(0.288344, 0.0521472)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogv34"]
+atlas = ExtResource("3_cdjbp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cmod"]
+atlas = ExtResource("3_cdjbp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06int"]
+atlas = ExtResource("3_cdjbp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8lct"]
+atlas = ExtResource("3_cdjbp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp8r7"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb05v"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18it6"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywflf"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hrm6"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whp8n"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqrpw"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6crh"]
+atlas = ExtResource("4_i2j51")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3u3se"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogv34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cmod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06int")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8lct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp8r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb05v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18it6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywflf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hrm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whp8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqrpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6crh")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"kill",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yvlr"]
+radius = 23.0
+height = 88.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prwj7"]
+shader = ExtResource("3_xteyw")
+shader_parameter/first_color = Color(1, 1, 1, 1)
+shader_parameter/second_color = Color(0, 1, 0, 1)
+shader_parameter/tird_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_coof = 0.2
+shader_parameter/randbow = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_matu1"]
+font = ExtResource("4_3rnac")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_prda7"]
+font = ExtResource("4_3rnac")
+font_size = 100
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rab0g"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u88gv"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkqdv"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3p3y"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8a8a"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1wri"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m7nj"]
+size = Vector2(100, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vp0si"]
+font = ExtResource("4_3rnac")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_v73eb"]
+font = ExtResource("4_3rnac")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_rtagh"]
+font = ExtResource("4_3rnac")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_vh88k"]
+font = ExtResource("4_3rnac")
+font_size = 30
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(576, 320)
+collision_layer = 5
+collision_mask = 5
+collision_priority = 2.0
+motion_mode = 1
+script = ExtResource("2_ldwi6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(3, 3)
+emitting = false
+amount = 10
+lifetime = 0.5
+texture = SubResource("AtlasTexture_2nfye")
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 41.1
+initial_velocity_max = 54.79
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_5h6sl")
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+color_ramp = SubResource("Gradient_6ptbr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 1)
+rotation = 3.14159
+scale = Vector2(0.622417, 0.629963)
+color = Color(0.666667, 0.678431, 0.541176, 1)
+energy = 1.21
+texture = SubResource("GradientTexture2D_dimc1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_3u3se")
+
+[node name="boom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xo0f1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_3yvlr")
+
+[node name="TankCorpus" type="Sprite2D" parent="."]
+light_mask = 0
+material = SubResource("ShaderMaterial_prwj7")
+position = Vector2(0, -6)
+scale = Vector2(6, 6)
+texture = ExtResource("2_6lkvp")
+
+[node name="pos" type="Node2D" parent="."]
+position = Vector2(1, -106)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 0
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+light_mask = 0
+offset_left = 464.0
+offset_right = 639.0
+offset_bottom = 61.0
+text = "Счёт"
+label_settings = SubResource("LabelSettings_matu1")
+metadata/_edit_use_anchors_ = true
+
+[node name="world" type="Label" parent="Camera2D/CanvasLayer"]
+light_mask = 0
+offset_left = 747.0
+offset_top = 4.0
+offset_right = 1007.0
+offset_bottom = 65.0
+text = "Уровень: ТЕСЬ"
+label_settings = SubResource("LabelSettings_matu1")
+metadata/_edit_use_anchors_ = true
+
+[node name="pause" type="Label" parent="Camera2D/CanvasLayer"]
+light_mask = 0
+offset_left = 456.0
+offset_top = 288.0
+offset_right = 706.0
+offset_bottom = 373.0
+text = "Пауза"
+label_settings = SubResource("LabelSettings_prda7")
+metadata/_edit_use_anchors_ = true
+
+[node name="menub" type="TextureButton" parent="Camera2D/CanvasLayer"]
+light_mask = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(7.96838, 7.96838)
+texture_normal = SubResource("AtlasTexture_rab0g")
+texture_pressed = SubResource("AtlasTexture_u88gv")
+metadata/_edit_use_anchors_ = true
+
+[node name="pauseb" type="TextureButton" parent="Camera2D/CanvasLayer"]
+light_mask = 0
+offset_left = 1024.0
+offset_right = 1040.0
+offset_bottom = 16.0
+scale = Vector2(7.96838, 7.96838)
+texture_normal = SubResource("AtlasTexture_hkqdv")
+texture_pressed = SubResource("AtlasTexture_l3p3y")
+metadata/_edit_use_anchors_ = true
+
+[node name="mobile" type="Node2D" parent="Camera2D/CanvasLayer"]
+light_mask = 0
+
+[node name="VirtualJoystick" type="Node2D" parent="Camera2D/CanvasLayer/mobile"]
+light_mask = 0
+position = Vector2(151, 511)
+scale = Vector2(1.84589, 1.84589)
+script = ExtResource("6_2mv6u")
+
+[node name="fire" type="TouchScreenButton" parent="Camera2D/CanvasLayer/mobile"]
+light_mask = 0
+position = Vector2(996, 486)
+scale = Vector2(7.87392, 7.87392)
+texture_normal = SubResource("AtlasTexture_j8a8a")
+texture_pressed = SubResource("AtlasTexture_c1wri")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D/CanvasLayer"]
+position = Vector2(60, 182)
+shape = SubResource("RectangleShape2D_6m7nj")
+
+[node name="BonusOn" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+position = Vector2(34, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("5_sai0n")
+region_enabled = true
+region_rect = Rect2(48, 80, 16, 16)
+
+[node name="chips" type="Node2D" parent="Camera2D/CanvasLayer"]
+light_mask = 512
+script = ExtResource("10_o1phm")
+
+[node name="amount1" type="Label" parent="Camera2D/CanvasLayer/chips"]
+offset_left = 1128.0
+offset_top = 368.0
+offset_right = 1144.0
+offset_bottom = 394.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_vp0si")
+
+[node name="Processor" type="Sprite2D" parent="Camera2D/CanvasLayer/chips"]
+modulate = Color(1, 1, 1, 0.501961)
+light_mask = 0
+position = Vector2(1086, 384)
+scale = Vector2(6, 6)
+texture = ExtResource("10_6ffm1")
+region_enabled = true
+region_rect = Rect2(24, 0, 12, 8)
+
+[node name="amount2" type="Label" parent="Camera2D/CanvasLayer/chips"]
+offset_left = 1128.0
+offset_top = 312.0
+offset_right = 1144.0
+offset_bottom = 338.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_vp0si")
+
+[node name="AI Chip" type="Sprite2D" parent="Camera2D/CanvasLayer/chips"]
+modulate = Color(1, 1, 1, 0.501961)
+light_mask = 0
+position = Vector2(1086, 328)
+scale = Vector2(6, 6)
+texture = ExtResource("10_6ffm1")
+region_enabled = true
+region_rect = Rect2(36, 0, 12, 8)
+
+[node name="amount3" type="Label" parent="Camera2D/CanvasLayer/chips"]
+offset_left = 1128.0
+offset_top = 200.0
+offset_right = 1144.0
+offset_bottom = 226.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_vp0si")
+
+[node name="Basic Chip" type="Sprite2D" parent="Camera2D/CanvasLayer/chips"]
+modulate = Color(1, 1, 1, 0.501961)
+light_mask = 0
+position = Vector2(1086, 216)
+scale = Vector2(6, 6)
+texture = ExtResource("10_6ffm1")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 8)
+
+[node name="amount4" type="Label" parent="Camera2D/CanvasLayer/chips"]
+offset_left = 1128.0
+offset_top = 256.0
+offset_right = 1144.0
+offset_bottom = 282.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_vp0si")
+
+[node name="Control Chip" type="Sprite2D" parent="Camera2D/CanvasLayer/chips"]
+modulate = Color(1, 1, 1, 0.501961)
+light_mask = 0
+position = Vector2(1086, 272)
+scale = Vector2(6, 6)
+texture = ExtResource("10_6ffm1")
+region_enabled = true
+region_rect = Rect2(12, 0, 12, 8)
+
+[node name="health" type="Node2D" parent="Camera2D/CanvasLayer"]
+
+[node name="HP" type="Label" parent="Camera2D/CanvasLayer/health"]
+offset_left = 192.0
+offset_top = 7.0
+offset_right = 252.0
+offset_bottom = 43.0
+text = "50"
+label_settings = SubResource("LabelSettings_v73eb")
+
+[node name="HP2" type="Sprite2D" parent="Camera2D/CanvasLayer/health"]
+position = Vector2(169, 19)
+scale = Vector2(3, 3)
+texture = ExtResource("4_x6egi")
+region_enabled = true
+region_rect = Rect2(34, 66, 10, 13)
+
+[node name="RAD" type="Label" parent="Camera2D/CanvasLayer/health"]
+offset_left = 199.0
+offset_top = 50.0
+offset_right = 239.0
+offset_bottom = 86.0
+text = "0%
+"
+label_settings = SubResource("LabelSettings_rtagh")
+
+[node name="RAD2" type="Sprite2D" parent="Camera2D/CanvasLayer/health"]
+position = Vector2(170, 65)
+scale = Vector2(3, 3)
+texture = ExtResource("4_x6egi")
+region_enabled = true
+region_rect = Rect2(64, 64, 16, 16)
+
+[node name="finish" type="Label" parent="Camera2D/CanvasLayer"]
+offset_left = 240.0
+offset_top = 598.0
+offset_right = 975.0
+offset_bottom = 623.0
+text = "Нажмите на зарядную станцию для завершения уровня"
+label_settings = SubResource("LabelSettings_vh88k")
+
+[node name="BonusOn2" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+position = Vector2(35, 320)
+scale = Vector2(3, 3)
+texture = ExtResource("11_b45wg")
+region_rect = Rect2(48, 80, 16, 16)
+
+[node name="DebugConsole" parent="Camera2D/CanvasLayer" instance=ExtResource("7_m8n54")]
+position = Vector2(0, 14)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/menub" to="." method="_on_menub_pressed"]
+[connection signal="button_down" from="Camera2D/CanvasLayer/pauseb" to="." method="_on_pauseb_button_down"]
+[connection signal="analogic_chage" from="Camera2D/CanvasLayer/mobile/VirtualJoystick" to="." method="_on_virtual_joystick_analogic_chage"]
+[connection signal="analogic_released" from="Camera2D/CanvasLayer/mobile/VirtualJoystick" to="." method="_on_virtual_joystick_analogic_released"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/mobile/fire" to="." method="_on_fire_pressed"]
+[connection signal="released" from="Camera2D/CanvasLayer/mobile/fire" to="." method="_on_fire_released"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

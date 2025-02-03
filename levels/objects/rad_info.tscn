@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://4631aur5g7fo"]
+
+[ext_resource type="Texture2D" uid="uid://dkbnmhorf1ftu" path="res://images/rk_room_set.png" id="1_kgw4e"]
+[ext_resource type="PackedScene" uid="uid://camw6qmw5r6wu" path="res://levels/rad_adder.tscn" id="2_gcdrc"]
+
+[node name="rad_info" type="Node2D"]
+scale = Vector2(6, 6)
+
+[node name="RkRoomSet" type="Sprite2D" parent="."]
+texture = ExtResource("1_kgw4e")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 16)
+
+[node name="rad_adder" parent="." instance=ExtResource("2_gcdrc")]
+scale = Vector2(0.1, 0.1)
+scale_r = 0.1

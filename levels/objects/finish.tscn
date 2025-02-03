@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm43gj34ghyts"]
+
+[ext_resource type="Script" path="res://levels/scripts/finish.gd" id="1_72tdu"]
+[ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="1_xx6bh"]
+[ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="2_36drx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_03sg6"]
+radius = 122.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7g0o0"]
+radius = 122.642
+
+[sub_resource type="LabelSettings" id="LabelSettings_2fgnm"]
+font = ExtResource("2_36drx")
+
+[node name="finish" type="Node2D"]
+script = ExtResource("1_72tdu")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("CircleShape2D_03sg6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_xx6bh")
+region_enabled = true
+region_rect = Rect2(0, 96, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7g0o0")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -54.0
+offset_top = 98.0
+offset_right = 58.0
+offset_bottom = 146.0
+text = "Нажмите
+для завершения 
+уровня"
+label_settings = SubResource("LabelSettings_2fgnm")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

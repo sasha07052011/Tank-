@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0ckk3e84fil"]
+
+[ext_resource type="Script" path="res://levels/scripts/GlobalValues.gd" id="1_6ni7x"]
+
+[node name="GlobalValues" type="Node2D"]
+script = ExtResource("1_6ni7x")

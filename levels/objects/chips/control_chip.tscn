@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1kx1ec5cwbog"]
+
+[ext_resource type="PackedScene" uid="uid://cqcyu5t16erk2" path="res://levels/objects/chips/DroppedChip.tscn" id="1_t4wph"]
+
+[node name="DroppedChip" instance=ExtResource("1_t4wph")]
+type = 1
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"type_2"
