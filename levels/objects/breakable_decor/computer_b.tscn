@@ -15,6 +15,3 @@ kill_anim_var = 3
 texture = ExtResource("2_x2vp5")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
-
-[node name="AnimatedSprite2D" parent="." index="2"]
-animation = &"default"
