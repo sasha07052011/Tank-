@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends ActivatedObject
 
 @export var locked = true
 @export var speed = 15
@@ -15,27 +15,31 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$CollisionShape2D2.disabled = false
-	if(!locked):
-		if(!on):
-			if(time<14):
-				time += speed*delta
+	if(active):
+		if(!locked):
+			if(!on):
+				if(time<14):
+					time += speed*delta
+				else:
+					time = 14
 			else:
-				time = 14
+				if(time>4):
+					time -= speed*delta
+				else:
+					time = 4
+					$CollisionShape2D2.disabled = true
+			var sh = ConvexPolygonShape2D.new()
+			sh.points = [Vector2(-15,7 - time),Vector2(15,7 - time),Vector2(15,7),Vector2(-15,7)]
+			$CollisionShape2D2.shape = sh
+			$AnimatedSprite2D.play("opened")
+			$wall.position.y = 6-time
+		#$CollisionShape2D2.position.y = 8-time
 		else:
-			if(time>4):
-				time -= speed*delta
-			else:
-				time = 4
-				$CollisionShape2D2.disabled = true
-		var sh = ConvexPolygonShape2D.new()
-		sh.points = [Vector2(-15,7 - time),Vector2(15,7 - time),Vector2(15,7),Vector2(-15,7)]
-		$CollisionShape2D2.shape = sh
-		$AnimatedSprite2D.play("opened")
-		$wall.position.y = 6-time
-	#$CollisionShape2D2.position.y = 8-time
+			time = 14
+			$AnimatedSprite2D.play("locked")
 	else:
 		time = 14
-		$AnimatedSprite2D.play("locked")
+		$AnimatedSprite2D.play("deactive")
 	$wall.region_rect = Rect2(Vector2(0,14*(key_type)),Vector2(30,time))
 
 
@@ -44,13 +48,14 @@ func kill():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if(body is Player):
-		on = true
-		if(GlobalValues.chips_got[key_type]>0):
-			if(locked):
-				GlobalValues.chips_got[key_type] -= 1
-				locked = false
-				$ok.play()
+	if(active):
+		if(body is Player):
+			on = true
+			if(GlobalValues.chips_got[key_type]>0):
+				if(locked):
+					GlobalValues.chips_got[key_type] -= 1
+					locked = false
+					$ok.play()
 			
 
 
