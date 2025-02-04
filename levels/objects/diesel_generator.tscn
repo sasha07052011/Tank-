@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=3 uid="uid://xgdcigwqgtho"]
+
+[ext_resource type="Script" path="res://levels/scripts/diesel_generator.gd" id="1_k7dpj"]
+[ext_resource type="Texture2D" uid="uid://beiwkmc15x8fq" path="res://images/decor_tankъ.png" id="1_r6yh4"]
+[ext_resource type="AudioStream" uid="uid://b5ri0rpjkj7uj" path="res://sounds/24f110d27ad0929.mp3" id="3_rkk74"]
+[ext_resource type="Texture2D" uid="uid://dqrlxycu4s54b" path="res://images/Chipes.png" id="4_exjpp"]
+[ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="5_fbbqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c45s"]
+atlas = ExtResource("1_r6yh4")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc55e"]
+atlas = ExtResource("1_r6yh4")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1i8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c45s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc55e")
+}],
+"loop": true,
+"name": &"repair",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ku4l2"]
+size = Vector2(43, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55twg"]
+size = Vector2(25, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuhia"]
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2i4o"]
+size = Vector2(48, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0nevn"]
+font = ExtResource("5_fbbqb")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rlx2n"]
+radius = 38.2099
+
+[node name="DieselGenerator" type="StaticBody2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_k7dpj")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d1i8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 14)
+shape = SubResource("RectangleShape2D_ku4l2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 2)
+shape = SubResource("RectangleShape2D_55twg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-13, 4.5)
+shape = SubResource("RectangleShape2D_yuhia")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("RectangleShape2D_p2i4o")
+
+[node name="ok" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rkk74")
+
+[node name="tip" type="Node2D" parent="."]
+
+[node name="Sprite2D4" type="Sprite2D" parent="tip"]
+position = Vector2(14, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_exjpp")
+region_enabled = true
+region_rect = Rect2(24, 0, 12, 8)
+
+[node name="Sprite2D2" type="Sprite2D" parent="tip"]
+position = Vector2(-8, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_exjpp")
+region_enabled = true
+region_rect = Rect2(12, 0, 12, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="tip"]
+position = Vector2(-19, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_exjpp")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 8)
+
+[node name="Sprite2D3" type="Sprite2D" parent="tip"]
+position = Vector2(3, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_exjpp")
+region_enabled = true
+region_rect = Rect2(36, 0, 12, 8)
+
+[node name="1" type="Label" parent="tip"]
+offset_left = -15.0
+offset_top = 17.0
+offset_right = -7.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 0.2)
+text = "0"
+label_settings = SubResource("LabelSettings_0nevn")
+
+[node name="2" type="Label" parent="tip"]
+offset_left = -4.0
+offset_top = 17.0
+offset_right = 4.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 0.2)
+text = "0"
+label_settings = SubResource("LabelSettings_0nevn")
+
+[node name="3" type="Label" parent="tip"]
+offset_left = 7.0
+offset_top = 17.0
+offset_right = 15.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 0.2)
+text = "0"
+label_settings = SubResource("LabelSettings_0nevn")
+
+[node name="4" type="Label" parent="tip"]
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 26.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 0.2)
+text = "0"
+label_settings = SubResource("LabelSettings_0nevn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rlx2n")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

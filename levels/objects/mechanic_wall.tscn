@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn6xuxvgvjdib"]
+[gd_scene load_steps=12 format=3 uid="uid://dn6xuxvgvjdib"]
 
 [ext_resource type="Script" path="res://levels/scripts/mechanic_wall.gd" id="1_pv7yt"]
 [ext_resource type="Texture2D" uid="uid://dis12pd5awllb" path="res://images/mwall.png" id="2_n1dxx"]
@@ -14,6 +14,10 @@ points = PackedVector2Array(-15, -7, 15, -7, 15, 7, -15, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edb4c"]
 size = Vector2(30, 50)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_08cvp"]
+atlas = ExtResource("4_hmt8d")
+region = Rect2(0, 32, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hxne"]
 atlas = ExtResource("4_hmt8d")
 region = Rect2(0, 0, 48, 16)
@@ -24,6 +28,14 @@ region = Rect2(0, 16, 48, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dxr7n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08cvp")
+}],
+"loop": true,
+"name": &"deactive",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2hxne")
@@ -69,7 +81,7 @@ debug_color = Color(0.886275, 0.6, 0.701961, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dxr7n")
-animation = &"locked"
+animation = &"deactive"
 
 [node name="ok" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_tgmwl")

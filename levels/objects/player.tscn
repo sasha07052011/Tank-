@@ -447,11 +447,12 @@ region_enabled = true
 region_rect = Rect2(64, 64, 16, 16)
 
 [node name="finish" type="Label" parent="Camera2D/CanvasLayer"]
-offset_left = 240.0
-offset_top = 598.0
-offset_right = 975.0
-offset_bottom = 623.0
-text = "Нажмите на зарядную станцию для завершения уровня"
+offset_left = 216.0
+offset_top = 584.0
+offset_right = 996.0
+offset_bottom = 637.0
+text = "Активируйте генератор
+ и нажмите на зарядную станцию для завершения уровня"
 label_settings = SubResource("LabelSettings_vh88k")
 
 [node name="BonusOn2" type="Sprite2D" parent="Camera2D/CanvasLayer"]
