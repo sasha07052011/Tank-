@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://b7131r8fuauvn"]
+[gd_scene load_steps=93 format=4 uid="uid://b7131r8fuauvn"]
 
 [ext_resource type="PackedScene" uid="uid://brlwnf83og270" path="res://levels/objects/player.tscn" id="1_4u16o"]
 [ext_resource type="Script" path="res://levels/scripts/world.gd" id="1_onpe0"]
@@ -29,6 +29,30 @@
 [ext_resource type="Texture2D" uid="uid://mrndmcb8w7rt" path="res://images/effects/explosion3.png" id="26_ap34l"]
 [ext_resource type="Texture2D" uid="uid://cwte56px5uomc" path="res://images/effects/Explosion.png" id="26_j05ad"]
 [ext_resource type="Texture2D" uid="uid://dnwu71jsnxhou" path="res://images/effects/explosion4.png" id="29_7npxu"]
+[ext_resource type="PackedScene" uid="uid://xgdcigwqgtho" path="res://levels/objects/diesel_generator.tscn" id="30_64cks"]
+[ext_resource type="Texture2D" uid="uid://dts3orjrygvl3" path="res://images/BadMan.png" id="31_q07im"]
+[ext_resource type="Texture2D" uid="uid://baay5g336enau" path="res://images/bull.png" id="32_1sadk"]
+[ext_resource type="Texture2D" uid="uid://35atcm5w0cbw" path="res://images/bullBM.png" id="33_s3lxu"]
+[ext_resource type="Texture2D" uid="uid://dqrlxycu4s54b" path="res://images/Chipes.png" id="34_76btt"]
+[ext_resource type="Texture2D" uid="uid://beiwkmc15x8fq" path="res://images/decor_tankъ.png" id="35_meic7"]
+[ext_resource type="Texture2D" uid="uid://cfxiawmho6qkw" path="res://images/logo2.png" id="36_vue1r"]
+[ext_resource type="Texture2D" uid="uid://dpycn3u6kkifk" path="res://images/logo.png" id="37_cdlby"]
+[ext_resource type="Texture2D" uid="uid://dmtphw53yqpom" path="res://images/meshanic_walls.png" id="38_vrf5i"]
+[ext_resource type="Texture2D" uid="uid://dis12pd5awllb" path="res://images/mwall.png" id="39_rq1tp"]
+[ext_resource type="Texture2D" uid="uid://bnl4yoi1sj4ji" path="res://images/new_noise_texture_2d.tres" id="40_pdlfh"]
+[ext_resource type="Texture2D" uid="uid://dh5mu3ewr7sup" path="res://images/reactor1.png" id="41_u3t7g"]
+[ext_resource type="Texture2D" uid="uid://dff6vi2jsl3vw" path="res://images/reactor2.png" id="42_ajqj5"]
+[ext_resource type="Texture2D" uid="uid://dkbnmhorf1ftu" path="res://images/rk_room_set.png" id="43_06t2n"]
+[ext_resource type="Texture2D" uid="uid://cnhs12wnd5egf" path="res://images/SpawnerBadMan.png" id="44_kptyd"]
+[ext_resource type="Texture2D" uid="uid://bcu238uxtrnt4" path="res://images/tank2.png" id="45_wporl"]
+[ext_resource type="Texture2D" uid="uid://bpceeboyvs1ij" path="res://images/tank.png" id="46_i2t0k"]
+[ext_resource type="Texture2D" uid="uid://bk8hygf27whf6" path="res://images/tank_corpus.png" id="47_x8eag"]
+[ext_resource type="Texture2D" uid="uid://cyj6yi4xwwkp5" path="res://images/tilesSky.png" id="48_ugjmu"]
+[ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="49_ar2xs"]
+[ext_resource type="Texture2D" uid="uid://bust5v4tj5r04" path="res://images/UV_wave_map.png" id="50_as810"]
+[ext_resource type="Texture2D" uid="uid://pfgsxpf1w8pw" path="res://images/water_tile.png" id="51_5ml3h"]
+[ext_resource type="Texture2D" uid="uid://2kf3js5yecec" path="res://images/water_tiles.png" id="52_j6gty"]
+[ext_resource type="Texture2D" uid="uid://bpmkc437vwyni" path="res://images/waves_texture.jpg" id="53_epmdo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbcy1"]
 atlas = ExtResource("26_ap34l")
@@ -516,6 +540,158 @@ sprite_frames = SubResource("SpriteFrames_0r7vp")
 autoplay = "default"
 frame_progress = 0.243779
 
+[node name="DieselGenerator" parent="." node_paths=PackedStringArray("obj") instance=ExtResource("30_64cks")]
+position = Vector2(406, -175)
+obj = [NodePath("../finish"), NodePath("../MechanicWall"), NodePath("../MechanicWall2"), NodePath("../MechanicWall3"), NodePath("../MechanicWall4")]
+
 [node name="Player" parent="." instance=ExtResource("1_4u16o")]
 position = Vector2(911, 587)
 light_energy = 0
+
+[node name="Explosion2" type="Sprite2D" parent="."]
+position = Vector2(-243, -2809)
+scale = Vector2(6, 6)
+texture = ExtResource("26_1x448")
+
+[node name="Explosion3" type="Sprite2D" parent="."]
+position = Vector2(-1840, -2570)
+scale = Vector2(6, 6)
+texture = ExtResource("26_ap34l")
+
+[node name="Explosion4" type="Sprite2D" parent="."]
+position = Vector2(-2123, -2874)
+scale = Vector2(6, 6)
+texture = ExtResource("29_7npxu")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+position = Vector2(-1605, -2330)
+scale = Vector2(6, 6)
+texture = ExtResource("26_j05ad")
+
+[node name="BadMan2" type="Sprite2D" parent="."]
+position = Vector2(-309, -2533)
+scale = Vector2(6, 6)
+texture = ExtResource("31_q07im")
+
+[node name="Bonus2" type="Sprite2D" parent="."]
+position = Vector2(-937, -2165)
+scale = Vector2(6, 6)
+texture = ExtResource("16_s2q5k")
+
+[node name="Bull" type="Sprite2D" parent="."]
+position = Vector2(-2410, -2300)
+scale = Vector2(6, 6)
+texture = ExtResource("32_1sadk")
+
+[node name="BullBm" type="Sprite2D" parent="."]
+position = Vector2(-1889, -2066)
+scale = Vector2(6, 6)
+texture = ExtResource("33_s3lxu")
+
+[node name="Chipes" type="Sprite2D" parent="."]
+position = Vector2(-2724, -2111)
+scale = Vector2(6, 6)
+texture = ExtResource("34_76btt")
+
+[node name="DecorTankъ" type="Sprite2D" parent="."]
+position = Vector2(-383, -2028)
+scale = Vector2(6, 6)
+texture = ExtResource("35_meic7")
+
+[node name="Logo2" type="Sprite2D" parent="."]
+position = Vector2(-2841, -1904)
+scale = Vector2(6, 6)
+texture = ExtResource("36_vue1r")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(-2213, -1895)
+scale = Vector2(6, 6)
+texture = ExtResource("37_cdlby")
+
+[node name="MeshanicWalls" type="Sprite2D" parent="."]
+position = Vector2(-3237, -2326)
+scale = Vector2(6, 6)
+texture = ExtResource("38_vrf5i")
+
+[node name="Mwall" type="Sprite2D" parent="."]
+position = Vector2(-1449, -1922)
+scale = Vector2(6, 6)
+texture = ExtResource("39_rq1tp")
+
+[node name="NewNoiseTexture2d" type="Sprite2D" parent="."]
+position = Vector2(-3590, -3077)
+scale = Vector2(6, 6)
+texture = ExtResource("40_pdlfh")
+
+[node name="Reactor1" type="Sprite2D" parent="."]
+position = Vector2(-2428, -3395)
+scale = Vector2(6, 6)
+texture = ExtResource("41_u3t7g")
+
+[node name="Reactor2" type="Sprite2D" parent="."]
+position = Vector2(-1898, -3287)
+scale = Vector2(6, 6)
+texture = ExtResource("42_ajqj5")
+
+[node name="RkRoomSet" type="Sprite2D" parent="."]
+position = Vector2(526, -3664)
+scale = Vector2(6, 6)
+texture = ExtResource("43_06t2n")
+
+[node name="RegularSpawnerBadMan" type="Sprite2D" parent="."]
+position = Vector2(-848, -3260)
+scale = Vector2(6, 6)
+texture = ExtResource("10_s3yxh")
+
+[node name="SpawnerBadMan" type="Sprite2D" parent="."]
+position = Vector2(1101, -2982)
+scale = Vector2(6, 6)
+texture = ExtResource("44_kptyd")
+
+[node name="Tank2" type="Sprite2D" parent="."]
+position = Vector2(104, -2048)
+scale = Vector2(6, 6)
+texture = ExtResource("45_wporl")
+
+[node name="Tank" type="Sprite2D" parent="."]
+position = Vector2(796, -2452)
+scale = Vector2(6, 6)
+texture = ExtResource("46_i2t0k")
+
+[node name="TankCorpus" type="Sprite2D" parent="."]
+position = Vector2(-1503, -3647)
+scale = Vector2(6, 6)
+texture = ExtResource("47_x8eag")
+
+[node name="TilesSky" type="Sprite2D" parent="."]
+position = Vector2(-147, -3790)
+scale = Vector2(6, 6)
+texture = ExtResource("48_ugjmu")
+
+[node name="TilesTest" type="Sprite2D" parent="."]
+position = Vector2(1578, -3727)
+scale = Vector2(6, 6)
+texture = ExtResource("49_ar2xs")
+
+[node name="UiTankъ" type="Sprite2D" parent="."]
+position = Vector2(-731, -3242)
+scale = Vector2(6, 6)
+texture = ExtResource("4_m58dw")
+
+[node name="UvWaveMap" type="Sprite2D" parent="."]
+position = Vector2(-1937, -3830)
+texture = ExtResource("50_as810")
+
+[node name="WaterTile" type="Sprite2D" parent="."]
+position = Vector2(-41, -3147)
+scale = Vector2(6, 6)
+texture = ExtResource("51_5ml3h")
+
+[node name="WaterTiles" type="Sprite2D" parent="."]
+position = Vector2(578, -3512)
+scale = Vector2(6, 6)
+texture = ExtResource("52_j6gty")
+
+[node name="WavesTexture" type="Sprite2D" parent="."]
+position = Vector2(3373, -2856)
+texture = ExtResource("53_epmdo")

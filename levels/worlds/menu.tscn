@@ -34,7 +34,7 @@ shader_parameter/randbow = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxdfp"]
 atlas = ExtResource("9_ssprx")
-region = Rect2(3, 17, 57, 27)
+region = Rect2(1, 7, 78, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2h4o0"]
 atlas = ExtResource("6_8o8u1")
@@ -114,11 +114,11 @@ texture_pressed = SubResource("AtlasTexture_grahw")
 [node name="Sprite2D" type="TextureButton" parent="."]
 light_mask = 2
 material = SubResource("ShaderMaterial_nejo6")
-offset_left = 280.49
-offset_top = 8.02026
-offset_right = 337.49
-offset_bottom = 35.0203
-scale = Vector2(10.1875, 10.1875)
+offset_left = 262.0
+offset_top = 18.0
+offset_right = 340.0
+offset_bottom = 57.0
+scale = Vector2(7.73133, 7.73133)
 texture_normal = SubResource("AtlasTexture_gxdfp")
 
 [node name="exit" type="TextureButton" parent="."]

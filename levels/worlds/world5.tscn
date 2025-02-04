@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cu46fndekymmr"]
+[gd_scene load_steps=19 format=4 uid="uid://cu46fndekymmr"]
 
 [ext_resource type="Script" path="res://levels/scripts/world.gd" id="1_v5sem"]
 [ext_resource type="TileSet" uid="uid://5pdac658i1hj" path="res://levels/worlds/Tilesets/tileset1.tres" id="2_jcmrf"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://f6cvb1dyiu6t" path="res://levels/objects/bonus2.tscn" id="10_d28lc"]
 [ext_resource type="PackedScene" uid="uid://ht235lf7wgnx" path="res://levels/objects/bonus1.tscn" id="11_ynxex"]
 [ext_resource type="PackedScene" uid="uid://c2i4nyijrw1xh" path="res://levels/objects/breakable_decor/RegularSpawnerBadMan.tscn" id="13_s5il3"]
+[ext_resource type="PackedScene" uid="uid://xgdcigwqgtho" path="res://levels/objects/diesel_generator.tscn" id="14_8leoc"]
+[ext_resource type="PackedScene" uid="uid://gwcrvoixnphq" path="res://levels/objects/chips/basic_chip.tscn" id="15_y4c2s"]
+[ext_resource type="PackedScene" uid="uid://dpfcjnamofpf1" path="res://levels/objects/chips/AI_chip.tscn" id="16_scxog"]
+[ext_resource type="PackedScene" uid="uid://bgb865lcuf8s7" path="res://levels/objects/chips/processor.tscn" id="17_splv6"]
+[ext_resource type="PackedScene" uid="uid://c1kx1ec5cwbog" path="res://levels/objects/chips/control_chip.tscn" id="18_sp33y"]
 
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("player", "bg")]
 script = ExtResource("1_v5sem")
@@ -108,3 +113,23 @@ position = Vector2(1680, -432)
 
 [node name="SpawnerBadMan4" parent="." instance=ExtResource("13_s5il3")]
 position = Vector2(1680, 1584)
+
+[node name="DieselGenerator" parent="." node_paths=PackedStringArray("obj") instance=ExtResource("14_8leoc")]
+position = Vector2(1728, 1104)
+obj = [NodePath("../finish")]
+AI_chips_col = 2
+
+[node name="DroppedChip" parent="." instance=ExtResource("15_y4c2s")]
+position = Vector2(-240, 1680)
+
+[node name="DroppedChip2" parent="." instance=ExtResource("16_scxog")]
+position = Vector2(-480, 1440)
+
+[node name="DroppedChip3" parent="." instance=ExtResource("16_scxog")]
+position = Vector2(1392, 48)
+
+[node name="DroppedChip4" parent="." instance=ExtResource("17_splv6")]
+position = Vector2(-288, -96)
+
+[node name="DroppedChip5" parent="." instance=ExtResource("18_sp33y")]
+position = Vector2(-1152, 816)
