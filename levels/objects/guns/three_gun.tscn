@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://bewhbcm742f0p"]
+
+[ext_resource type="PackedScene" uid="uid://b8iplj2nnuoox" path="res://levels/objects/guns/basic_gun.tscn" id="1_ptiud"]
+[ext_resource type="Texture2D" uid="uid://chpjwetaer2ap" path="res://images/guns.png" id="2_cjxjj"]
+[ext_resource type="PackedScene" uid="uid://do3p135j8qgih" path="res://levels/bull.tscn" id="2_rlfrf"]
+[ext_resource type="AudioStream" uid="uid://mfnowthe8jv8" path="res://sounds/z_uk-vystrel-s-pistoleta.mp3" id="4_s51cx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ejm7"]
+atlas = ExtResource("2_cjxjj")
+region = Rect2(18, 0, 6, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnbwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ejm7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicGun" node_paths=PackedStringArray("bum") instance=ExtResource("1_ptiud")]
+bull = ExtResource("2_rlfrf")
+bum = NodePath("ZUk-vystrel-s-pistoleta")
+bum_move = 3.4
+gtype = "TRIPLE"
+
+[node name="Node2D" type="Node2D" parent="bull_points" index="0"]
+position = Vector2(-2, -10)
+rotation = -0.174533
+
+[node name="Node2D2" type="Node2D" parent="bull_points" index="1"]
+position = Vector2(0, -10)
+
+[node name="Node2D3" type="Node2D" parent="bull_points" index="2"]
+position = Vector2(2, -10)
+rotation = 0.174533
+
+[node name="sprite" parent="." index="1"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_tnbwx")
+
+[node name="fire" parent="." index="2"]
+position = Vector2(0, -12)
+
+[node name="ZUk-vystrel-s-pistoleta" type="AudioStreamPlayer2D" parent="." index="3"]
+position = Vector2(0, -10)
+stream = ExtResource("4_s51cx")
+
+[node name="Timer" parent="." index="4"]
+autostart = true

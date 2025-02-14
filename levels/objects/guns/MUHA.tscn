@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://1g5p5cwqwj2s"]
+
+[ext_resource type="PackedScene" uid="uid://b8iplj2nnuoox" path="res://levels/objects/guns/basic_gun.tscn" id="1_tfma6"]
+[ext_resource type="Texture2D" uid="uid://chpjwetaer2ap" path="res://images/guns.png" id="2_5m0pl"]
+[ext_resource type="AudioStream" uid="uid://mfnowthe8jv8" path="res://sounds/z_uk-vystrel-s-pistoleta.mp3" id="3_gcdcf"]
+[ext_resource type="PackedScene" uid="uid://bd3hjffpy2hxx" path="res://levels/bull2s.tscn" id="3_wjndf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0cc1"]
+atlas = ExtResource("2_5m0pl")
+region = Rect2(12, 0, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjw50"]
+atlas = ExtResource("2_5m0pl")
+region = Rect2(42, 0, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4x67"]
+atlas = ExtResource("2_5m0pl")
+region = Rect2(72, 0, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8aoo"]
+atlas = ExtResource("2_5m0pl")
+region = Rect2(102, 0, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44t88"]
+atlas = ExtResource("2_5m0pl")
+region = Rect2(132, 0, 6, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lc83l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0cc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjw50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4x67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8aoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44t88")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicGun" node_paths=PackedStringArray("bum") instance=ExtResource("1_tfma6")]
+bull = ExtResource("3_wjndf")
+shot_speed = 1.5
+bum = NodePath("ZUk-vystrel-s-pistoleta")
+gtype = "MUHA"
+
+[node name="Node2D" type="Node2D" parent="bull_points" index="0"]
+position = Vector2(0, -11)
+
+[node name="sprite" parent="." index="1"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_lc83l")
+autoplay = "default"
+frame_progress = 0.00294329
+
+[node name="fire" parent="." index="2"]
+position = Vector2(0, -12)
+
+[node name="ZUk-vystrel-s-pistoleta" type="AudioStreamPlayer2D" parent="." index="3"]
+position = Vector2(0, -11)
+stream = ExtResource("3_gcdcf")

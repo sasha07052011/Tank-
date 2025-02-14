@@ -11,6 +11,7 @@ extends StaticBody2D
 @export var type_chip = 0
 @export var ranomise_pos = false
 @export_range(1,4) var kill_anim_var = 1
+@export var mname = "DRP"
 var t = 0
 
 func dropping(id):

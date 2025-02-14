@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dks15frcwpou8"]
+
+[ext_resource type="PackedScene" uid="uid://b8iplj2nnuoox" path="res://levels/objects/guns/basic_gun.tscn" id="1_653vb"]
+[ext_resource type="PackedScene" uid="uid://do3p135j8qgih" path="res://levels/bull.tscn" id="2_peb1a"]
+[ext_resource type="Texture2D" uid="uid://chpjwetaer2ap" path="res://images/guns.png" id="3_72sbh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cfd8"]
+atlas = ExtResource("3_72sbh")
+region = Rect2(0, 0, 6, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxmuu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cfd8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicGun" instance=ExtResource("1_653vb")]
+bull = ExtResource("2_peb1a")
+gtype = "Simple"
+
+[node name="Node2D" type="Node2D" parent="bull_points" index="0"]
+position = Vector2(0, -6)
+
+[node name="sprite" parent="." index="1"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_sxmuu")
+
+[node name="fire" parent="." index="2"]
+position = Vector2(0, -7)

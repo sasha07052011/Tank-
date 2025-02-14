@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var light_energy = 1
 @export var speed = 700
-@export var popus = false
+@export var gun_type = 1
 @export var rad_st = 80
 @export var menu = false
 @export var speed_bonus = 1
@@ -20,6 +20,8 @@ var time = 0
 var forse = 1
 var old_pos = Vector2.ZERO
 var block_move = false
+var getted_guns = 1
+var seleted_gun = 1
 
 func kill(bad):
 	if(bad == "bull_bm"):
@@ -31,6 +33,9 @@ func kill(bad):
 			$TankCorpus.hide()
 			$AnimatedSprite2D.play("kill")
 			block_move = true
+			for i in $guns.get_children():
+				i.active = false
+			$guns.hide()
 			$boom.play()
 		return
 	if(bad == "rad"):
@@ -44,14 +49,15 @@ func kill(bad):
 func get_pos() -> Vector2:
 	return position
 
-func hit():
-	var b = preload("res://levels/bull.tscn").instantiate()
-	b.init(rotation)
-	b.position = $pos.global_position
-	get_parent().add_child(b)
+#func hit():
+	#var b = preload("res://levels/bull.tscn").instantiate()
+	#b.init(rotation)
+	#b.position = $pos.global_position
+	#get_parent().add_child(b)
 
 func _ready():
-	GlobalValues.player = $"."
+	
+	GlobalValues.player = self
 	$AnimatedSprite2D.play_backwards("default")
 	$PointLight2D.energy = light_energy
 	$Camera2D/CanvasLayer/pause.hide()
@@ -65,7 +71,26 @@ func _ready():
 	GlobalValues.in_menu = menu
 	GlobalValues.chips_got = [0,0,0,0]
 
+func repl_gun():
+	if($guns.get_child_count()>seleted_gun):
+		seleted_gun+=1
+	else:
+		seleted_gun=1
+	
+	for i in $guns.get_children():
+		if(!block_move):
+			if(i.name=="gun"+str(seleted_gun)):
+				i.show()
+			else:
+				i.hide()
+			i.active = false
+	$gun_repl.play()
+
 func _process(delta):
+	if(get_parent()!=Window):
+		$guns.get_node("gun"+str(gun_type)).base_scene = get_parent()
+	if(!mobile):
+		fire = false
 	old_pos = global_position
 	RenderingServer.global_shader_parameter_set("color", GlobalValues.color)
 	if(!GlobalValues.pause):
@@ -86,25 +111,17 @@ func _process(delta):
 			rotation_degrees+=90
 			if(Input.is_action_pressed("up")):
 				end_speed = Vector2(0,-speed*forse).rotated(rotation)
-			if(Input.is_key_pressed(KEY_C)):
-				pass
 			if(Input.is_action_just_pressed("light")):
 				light=!light
-			if(popus):
-				if(Input.is_action_pressed("hit")):
-					hit()
-			else:
-				if(Input.is_action_just_pressed("hit")):
-					hit()
+			if(Input.is_action_pressed("hit")):
+				fire = true
 	else:
 		$Camera2D/CanvasLayer/pause.show()
 	$Camera2D/CanvasLayer/Label.text = "Счёт: "+str(GlobalValues.score)+"/"+str(GlobalValues.max_score)
 	$Camera2D/CanvasLayer/world.text = "Уровень: "+str(GlobalValues.world)
 	if(mobile):
 		end_speed = last_m*speed*forse*speed_bonus*delta
-	if(popus):
-		if(fire):
-			hit()
+	$guns.get_node("gun"+str(seleted_gun)).active = fire
 	if(!mobile):
 		$Camera2D/CanvasLayer/mobile.hide()
 	if(light): $PointLight2D.show()
@@ -113,10 +130,6 @@ func _process(delta):
 		if(!GlobalValues.pause): move_and_collide(end_speed)
 	else:
 		rotation = 0
-	if(popus):
-		$Camera2D/CanvasLayer/BonusOn.show()
-	else:
-		$Camera2D/CanvasLayer/BonusOn.hide()
 		
 	if(speed_bonus>=1.1):
 		$Camera2D/CanvasLayer/BonusOn2.show()
@@ -128,7 +141,8 @@ func _process(delta):
 	if(GlobalValues.score>=GlobalValues.max_score):
 		if(!GlobalValues.in_menu):
 			$Camera2D/CanvasLayer/finish.show()
-	
+	if(Input.is_action_just_pressed("repl_gun")):
+		repl_gun()
 	
 func _on_pauseb_button_down():
 	GlobalValues.pause = !GlobalValues.pause
@@ -137,10 +151,7 @@ func _on_pauseb_button_down():
 func _on_fire_pressed():
 	if(!GlobalValues.pause):
 		if(mobile):
-			if(popus):
-				fire = true
-			else:
-				hit()
+			fire = true
 
 
 func _on_virtual_joystick_analogic_chage(move, dist):
@@ -174,8 +185,14 @@ func _on_touch_screen_button_pressed():
 
 func _on_menub_pressed():
 	GlobalValues.exit_per = true
+	GlobalValues.load_effect.exit()
 	#get_tree().change_scene_to_file("res://levels/worlds/menu.tscn")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	GlobalValues.reload = true
+	GlobalValues.load_effect.exit()
+
+
+func _on_gun_r_pressed() -> void:
+	repl_gun()

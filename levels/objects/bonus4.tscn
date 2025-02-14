@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://f6cvb1dyiu6t"]
+[gd_scene load_steps=6 format=3 uid="uid://b2cw6ncl8e75c"]
 
-[ext_resource type="Script" path="res://levels/scripts/bonuses/bonus2.gd" id="1_o4fu6"]
-[ext_resource type="Texture2D" uid="uid://bru4lgpmluqgj" path="res://images/bonus2.png" id="2_kn04k"]
+[ext_resource type="Script" path="res://levels/scripts/bonuses/bonus_4.gd" id="1_xt1wf"]
+[ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="2_4gwmn"]
 
 [sub_resource type="Gradient" id="Gradient_fb1i4"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -15,18 +15,19 @@ fill_to = Vector2(0.873418, 0.161392)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocjms"]
 radius = 64.7611
 
-[node name="bonus2" type="Node2D"]
-script = ExtResource("1_o4fu6")
+[node name="bonus1" type="Node2D"]
+script = ExtResource("1_xt1wf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
-texture = ExtResource("2_kn04k")
-region_rect = Rect2(48, 80, 16, 16)
+texture = ExtResource("2_4gwmn")
+region_enabled = true
+region_rect = Rect2(80, 80, 16, 16)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(3.625, 3.625)
-color = Color(0.968627, 0, 0.0745098, 1)
-energy = 10.0
+color = Color(0.568627, 0.627451, 0.168627, 1)
+energy = 16.0
 texture = SubResource("GradientTexture2D_ji88g")
 
 [node name="Area2D" type="Area2D" parent="."]

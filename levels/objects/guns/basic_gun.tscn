@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8iplj2nnuoox"]
+
+[ext_resource type="Script" path="res://levels/scripts/guns/basic_gun.gd" id="1_adm3x"]
+[ext_resource type="Texture2D" uid="uid://chpjwetaer2ap" path="res://images/guns.png" id="2_qjr1q"]
+
+[node name="BasicGun" type="Node2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_adm3x")
+
+[node name="bull_points" type="Node2D" parent="."]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="fire" type="Sprite2D" parent="."]
+texture = ExtResource("2_qjr1q")
+region_enabled = true
+region_rect = Rect2(24, 4, 6, 6)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

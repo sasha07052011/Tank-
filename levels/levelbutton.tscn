@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://oy14nd6bhk2i"]
+
+[ext_resource type="Script" path="res://levels/scripts/system/levelbutton.gd" id="1_fh060"]
+[ext_resource type="Texture2D" uid="uid://b6fbo4543gxmu" path="res://images/ui_Tankъ.png" id="2_c5g71"]
+[ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="3_fpwfc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qv64"]
+atlas = ExtResource("2_c5g71")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuk58"]
+atlas = ExtResource("2_c5g71")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mws1n"]
+font = ExtResource("3_fpwfc")
+font_size = 61
+font_color = Color(0.509804, 0.921569, 0.811765, 1)
+shadow_color = Color(0, 0, 0, 0.819608)
+
+[node name="Levelbutton" type="Node2D"]
+script = ExtResource("1_fh060")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.349065, 0.349065, 0.349065, 1)
+scale = Vector2(6, 6)
+texture = ExtResource("2_c5g71")
+centered = false
+region_enabled = true
+region_rect = Rect2(80, 48, 16, 16)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(6, 6)
+texture_normal = SubResource("AtlasTexture_8qv64")
+texture_pressed = SubResource("AtlasTexture_wuk58")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 11.0
+offset_right = 100.24
+offset_bottom = 116.0
+text = "100"
+label_settings = SubResource("LabelSettings_mws1n")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=4 uid="uid://dc0chesqcwwya"]
+
+[ext_resource type="Script" path="res://levels/scripts/system/select_level.gd" id="1_t0yvc"]
+[ext_resource type="TileSet" uid="uid://5pdac658i1hj" path="res://levels/worlds/Tilesets/tileset1.tres" id="1_xub02"]
+[ext_resource type="PackedScene" uid="uid://dbmlgkalhvljs" path="res://levels/objects/bonus5.tscn" id="2_cnah1"]
+[ext_resource type="PackedScene" uid="uid://dn6xuxvgvjdib" path="res://levels/objects/mechanic_wall.tscn" id="3_df03n"]
+[ext_resource type="PackedScene" uid="uid://4631aur5g7fo" path="res://levels/objects/rad_info.tscn" id="4_yluxf"]
+[ext_resource type="PackedScene" uid="uid://c2i4nyijrw1xh" path="res://levels/objects/breakable_decor/RegularSpawnerBadMan.tscn" id="5_38pqh"]
+[ext_resource type="PackedScene" uid="uid://dibw4d1q3ue2u" path="res://levels/load_level.tscn" id="6_neipf"]
+[ext_resource type="Texture2D" uid="uid://b6fbo4543gxmu" path="res://images/ui_Tankъ.png" id="7_eop1w"]
+[ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="10_l54ti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anyhx"]
+atlas = ExtResource("7_eop1w")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cixpk"]
+atlas = ExtResource("7_eop1w")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pqjgm"]
+font = ExtResource("10_l54ti")
+font_size = 101
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.658824)
+
+[node name="SelectLevel" type="Node2D"]
+script = ExtResource("1_t0yvc")
+
+[node name="bg1" type="Node2D" parent="."]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="bg1"]
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAAYAAAABAAMAAAABAAYAAAABAAMAAAACAAYAAAABAAMAAAADAAYAAAABAAMAAAAEAAYAAAABAAMAAAAAAAMAAAABAAUAAAABAAMAAAABAAUAAAACAAMAAAABAAUAAAADAAMAAAACAAUAAAADAAIAAAAMAAQAAAADAAEAAAACAAQAAAADAAAAAAACAAQAAAAIAAIAAAACAAQAAAALAAAAAAAAAAQAAAALAAEAAAAAAAQAAAALAAIAAAAAAAQAAAALAAMAAAAAAAQAAAALAAQAAAADAAYAAAALAAUAAAADAAYAAAALAAYAAAAAAAQAAAAHAAMAAAAAAAQAAAAHAAQAAAAAAAQAAAAHAAUAAAAAAAQAAAAFAAYAAAABAAMAAAAGAAYAAAABAAMAAAAIAAMAAAACAAQAAAAIAAQAAAACAAQAAAAIAAUAAAACAAQAAAAIAAYAAAACAAQAAAAHAAIAAAANAAQAAAAHAAEAAAAAAAMAAAAIAAEAAAACAAMAAAAHAAYAAAADAAMAAAAAAAQAAAADAAAAAAAAAAUAAAADAAAAAAABAAUAAAADAAAAAAABAAQAAAADAAAAAAACAAUAAAADAAAAAAACAAQAAAADAAAAAAADAAQAAAADAAAAAAADAAUAAAADAAAAAAAEAAQAAAADAAAAAAAFAAQAAAADAAAAAAAFAAMAAAABAAEAAAAFAAIAAAADAAAAAAAEAAIAAAADAAAAAAAEAAMAAAABAAEAAAAGAAQAAAADAAAAAAAGAAMAAAABAAEAAAAFAAUAAAADAAAAAAAEAAUAAAADAAAAAAAGAAUAAAADAAAAAAAGAAIAAAADAAAAAAAFAAEAAAABAAEAAAAEAAEAAAABAAEAAAAEAAAAAAADAAAAAAAFAAAAAAADAAAAAAAGAAEAAAABAAEAAAAGAAAAAAADAAAAAAAHAAAAAAADAAAAAAAIAAAAAAADAAAAAAAJAAAAAAADAAAAAAAKAAAAAAADAAAAAAAKAAEAAAADAAAAAAAKAAIAAAADAAAAAAAKAAMAAAADAAAAAAAJAAMAAAADAAAAAAAJAAQAAAADAAAAAAAKAAQAAAADAAAAAAAKAAUAAAADAAAAAAAJAAUAAAADAAAAAAAJAAYAAAADAAAAAAAKAAYAAAADAAAAAAAJAAIAAAADAAAAAAAJAAEAAAADAAAAAAAMAAYAAAABAAQAAAAMAAUAAAAEAAYAAAAMAAQAAAAEAAYAAAAMAAMAAAABAAQAAAAMAAIAAAABAAQAAAAMAAEAAAABAAQAAAAMAAAAAAABAAQAAAAAAAAAAAABAAQAAAAAAAEAAAABAAQAAAAAAAIAAAABAAQAAAABAAIAAAABAAQAAAABAAEAAAABAAQAAAABAAAAAAABAAQAAAACAAEAAAABAAQAAAACAAIAAAABAAQAAAACAAAAAAABAAQAAAA=")
+tile_set = ExtResource("1_xub02")
+
+[node name="bonus1" parent="bg1" instance=ExtResource("2_cnah1")]
+position = Vector2(960, 144)
+
+[node name="MechanicWall" parent="bg1" instance=ExtResource("3_df03n")]
+position = Vector2(528, 240)
+active = true
+
+[node name="rad_info" parent="bg1" instance=ExtResource("4_yluxf")]
+position = Vector2(624, 480)
+
+[node name="SpawnerBadMan" parent="bg1" instance=ExtResource("5_38pqh")]
+position = Vector2(1008, 528)
+regular = false
+
+[node name="menub" type="TextureButton" parent="."]
+light_mask = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(6.0979, 6.0979)
+texture_normal = SubResource("AtlasTexture_anyhx")
+texture_pressed = SubResource("AtlasTexture_cixpk")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 336.0
+offset_top = 48.0
+offset_right = 892.0
+offset_bottom = 131.0
+text = "Лаборатория"
+label_settings = SubResource("LabelSettings_pqjgm")
+
+[node name="LoadLevel" parent="." instance=ExtResource("6_neipf")]
+
+[node name="buttons" type="Node2D" parent="."]
+position = Vector2(336, 240)
+
+[connection signal="pressed" from="menub" to="." method="_on_menub_pressed"]
+[connection signal="ex" from="LoadLevel" to="." method="_on_load_level_ex"]

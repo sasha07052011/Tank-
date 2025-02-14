@@ -7,8 +7,6 @@ var next_stage = "res://levels/worlds/world1.tscn"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalValues.pause = false
-	bg = $CanvasLayer/Sprite2D
-	bg.position.x = 0
 	$background/Player/Camera2D/CanvasLayer.hide()
 	$background/Player/Camera2D.enabled = false
 	GlobalValues.exit_per = false
@@ -31,23 +29,14 @@ func _process(delta):
 			get_window().mode = Window.MODE_FULLSCREEN
 		else:
 			get_window().mode = Window.MODE_WINDOWED
-	if(GlobalValues.start_per):
-		if(bg.position.x<get_viewport_rect().size.x):
-			bg.position.x+=40
-		else:
-			GlobalValues.start_per = false
-	if(GlobalValues.exit_per):
-		if(bg.position.x>0):
-			bg.position.x-=40
-		else:
-			get_tree().change_scene_to_file(next_stage)
 	#print(OS.get_name())
 
 
 func _on_start_pressed():
 	GlobalValues.exit_per = true
-	next_stage = "res://levels/worlds/world1.tscn"
+	next_stage = "res://levels/worlds/select_level.tscn"
 	GlobalValues.chips_got = [0,0,0,0]
+	$LoadLevel.exit()
 
 
 func _on_exit_pressed():
@@ -57,7 +46,7 @@ func _on_exit_pressed():
 
 
 func _on_sprite_2d_pressed():
-	get_tree().change_scene_to_file("res://levels/worlds/Test.tscn")
+	get_tree().change_scene_to_file("res://levels/worlds/Test2.tscn")
 	GlobalValues.chips_got = [0,0,0,0]
 
 
@@ -74,5 +63,12 @@ func _on_texture_button_pressed():
 
 
 func _on_texture_button_button_down() -> void:
-	GlobalValues.exit_per=true
 	next_stage = "res://levels/worlds/settings.tscn"
+	$LoadLevel.exit()
+	GlobalValues.exit_per = true
+
+
+
+func _on_load_level_ex() -> void:
+	if(GlobalValues.exit_per):
+		get_tree().change_scene_to_file(next_stage)

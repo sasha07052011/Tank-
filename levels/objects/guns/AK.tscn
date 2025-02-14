@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3sfod4pknwow"]
+
+[ext_resource type="PackedScene" uid="uid://b8iplj2nnuoox" path="res://levels/objects/guns/basic_gun.tscn" id="1_er3gj"]
+[ext_resource type="Texture2D" uid="uid://chpjwetaer2ap" path="res://images/guns.png" id="2_iuaif"]
+[ext_resource type="PackedScene" uid="uid://do3p135j8qgih" path="res://levels/bull.tscn" id="2_wao6s"]
+[ext_resource type="AudioStream" uid="uid://mfnowthe8jv8" path="res://sounds/z_uk-vystrel-s-pistoleta.mp3" id="4_lw24k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxccu"]
+atlas = ExtResource("2_iuaif")
+region = Rect2(6, 0, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_314ob"]
+atlas = ExtResource("2_iuaif")
+region = Rect2(36, 0, 6, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6tec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxccu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_314ob")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BasicGun" node_paths=PackedStringArray("bum") instance=ExtResource("1_er3gj")]
+bull = ExtResource("2_wao6s")
+shot_speed = 0.05
+bum = NodePath("bum")
+bum_move = 3.4
+gtype = "AK"
+
+[node name="Node2D" type="Node2D" parent="bull_points" index="0"]
+position = Vector2(0, -10)
+
+[node name="sprite" parent="." index="1"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_c6tec")
+autoplay = "default"
+frame_progress = 0.952365
+
+[node name="fire" parent="." index="2"]
+position = Vector2(0, -11)
+
+[node name="bum" type="AudioStreamPlayer2D" parent="." index="3"]
+position = Vector2(0, -10)
+stream = ExtResource("4_lw24k")

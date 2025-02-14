@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://3vtfecgfnkhq"]
 
-[ext_resource type="Script" path="res://levels/scripts/water.gd" id="1_6ke2i"]
+[ext_resource type="Script" path="res://levels/scripts/system/water.gd" id="1_6ke2i"]
 [ext_resource type="Texture2D" uid="uid://bpmkc437vwyni" path="res://images/waves_texture.jpg" id="2_44t2c"]
 [ext_resource type="Texture2D" uid="uid://bust5v4tj5r04" path="res://images/UV_wave_map.png" id="2_q4kw7"]
 [ext_resource type="Shader" path="res://levels/scripts/shaders/simple_water.gdshader" id="2_qbm3t"]

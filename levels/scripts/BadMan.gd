@@ -38,6 +38,7 @@ func _process(delta):
 
 func kill():
 	$CollisionShape2D.queue_free()
+	$rad_adder.queue_free()
 	if(randi_range(0,1)==0):
 		$AnimatedSprite2D.play("kill")
 	else:

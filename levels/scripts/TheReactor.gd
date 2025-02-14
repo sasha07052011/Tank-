@@ -1,3 +1,5 @@
+class_name Reactor
+
 extends Node2D
 
 @export var hp = 20

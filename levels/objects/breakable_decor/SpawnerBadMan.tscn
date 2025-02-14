@@ -6,7 +6,7 @@
 
 [node name="SpawnerBadMan" instance=ExtResource("1_71h2u")]
 drop = Array[PackedScene]([ExtResource("2_40rrd")])
-col = Vector2(1, 10)
+col = Vector2(0, 5)
 ranomise_pos = true
 
 [node name="Sprite2D" parent="." index="0"]

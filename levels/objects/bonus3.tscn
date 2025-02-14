@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://tx22epdui78f"]
 
-[ext_resource type="Script" path="res://levels/scripts/bonus3.gd" id="1_5s0xm"]
+[ext_resource type="Script" path="res://levels/scripts/bonuses/bonus3.gd" id="1_5s0xm"]
 [ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="2_x82kq"]
 
 [sub_resource type="Gradient" id="Gradient_fb1i4"]

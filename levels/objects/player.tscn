@@ -1,8 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://brlwnf83og270"]
+[gd_scene load_steps=52 format=3 uid="uid://brlwnf83og270"]
 
 [ext_resource type="Texture2D" uid="uid://bk8hygf27whf6" path="res://images/tank_corpus.png" id="2_6lkvp"]
 [ext_resource type="Script" path="res://levels/scripts/Player.gd" id="2_ldwi6"]
-[ext_resource type="Texture2D" uid="uid://bcu238uxtrnt4" path="res://images/tank2.png" id="3_cdjbp"]
+[ext_resource type="Texture2D" uid="uid://c55y5jhiprt20" path="res://images/tank1.png" id="3_mulsb"]
 [ext_resource type="Shader" path="res://levels/scripts/shaders/tank2.gdshader" id="3_xteyw"]
 [ext_resource type="FontFile" uid="uid://cu01sokhea52p" path="res://fonts/clacon2.ttf" id="4_3rnac"]
 [ext_resource type="Texture2D" uid="uid://dnwu71jsnxhou" path="res://images/effects/explosion4.png" id="4_i2j51"]
@@ -10,10 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="5_sai0n"]
 [ext_resource type="AudioStream" uid="uid://dgj1jpw506786" path="res://sounds/zvuk-vzryva-dlya-video.mp3" id="5_xo0f1"]
 [ext_resource type="Script" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="6_2mv6u"]
-[ext_resource type="PackedScene" uid="uid://cjivswfe4fuay" path="res://levels/worlds/DebugConsole.tscn" id="7_m8n54"]
+[ext_resource type="PackedScene" uid="uid://cjivswfe4fuay" path="res://levels/DebugConsole.tscn" id="7_m8n54"]
 [ext_resource type="Texture2D" uid="uid://dqrlxycu4s54b" path="res://images/Chipes.png" id="10_6ffm1"]
 [ext_resource type="Script" path="res://levels/scripts/player_chips_icons.gd" id="10_o1phm"]
+[ext_resource type="AudioStream" uid="uid://mfnowthe8jv8" path="res://sounds/z_uk-vystrel-s-pistoleta.mp3" id="11_aclj4"]
 [ext_resource type="Texture2D" uid="uid://bru4lgpmluqgj" path="res://images/bonus2.png" id="11_b45wg"]
+[ext_resource type="PackedScene" uid="uid://dks15frcwpou8" path="res://levels/objects/guns/small_player_gun.tscn" id="15_dl7kr"]
+[ext_resource type="AudioStream" uid="uid://b5ri0rpjkj7uj" path="res://sounds/24f110d27ad0929.mp3" id="17_2amhx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nfye"]
 atlas = ExtResource("4_x6egi")
@@ -40,20 +43,20 @@ fill = 1
 fill_from = Vector2(0.490798, 0.5)
 fill_to = Vector2(0.288344, 0.0521472)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogv34"]
-atlas = ExtResource("3_cdjbp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2ce0"]
+atlas = ExtResource("3_mulsb")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4cmod"]
-atlas = ExtResource("3_cdjbp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg613"]
+atlas = ExtResource("3_mulsb")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_06int"]
-atlas = ExtResource("3_cdjbp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nlyr"]
+atlas = ExtResource("3_mulsb")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q8lct"]
-atlas = ExtResource("3_cdjbp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_crjug"]
+atlas = ExtResource("3_mulsb")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yp8r7"]
@@ -92,16 +95,16 @@ region = Rect2(224, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ogv34")
+"texture": SubResource("AtlasTexture_q2ce0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4cmod")
+"texture": SubResource("AtlasTexture_dg613")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_06int")
+"texture": SubResource("AtlasTexture_1nlyr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q8lct")
+"texture": SubResource("AtlasTexture_crjug")
 }],
 "loop": true,
 "name": &"default",
@@ -184,6 +187,10 @@ region = Rect2(64, 0, 16, 16)
 atlas = ExtResource("4_x6egi")
 region = Rect2(64, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5314"]
+atlas = ExtResource("4_x6egi")
+region = Rect2(80, 0, 16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6m7nj"]
 size = Vector2(100, 100)
 
@@ -233,10 +240,10 @@ position = Vector2(0, 1)
 rotation = 3.14159
 scale = Vector2(0.622417, 0.629963)
 color = Color(0.666667, 0.678431, 0.541176, 1)
-energy = 1.21
 texture = SubResource("GradientTexture2D_dimc1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_3u3se")
 
@@ -250,12 +257,23 @@ shape = SubResource("CapsuleShape2D_3yvlr")
 [node name="TankCorpus" type="Sprite2D" parent="."]
 light_mask = 0
 material = SubResource("ShaderMaterial_prwj7")
-position = Vector2(0, -6)
+position = Vector2(0, -8)
 scale = Vector2(6, 6)
 texture = ExtResource("2_6lkvp")
 
-[node name="pos" type="Node2D" parent="."]
-position = Vector2(1, -106)
+[node name="guns" type="Node2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="gun1" parent="guns" node_paths=PackedStringArray("bum") instance=ExtResource("15_dl7kr")]
+bum = NodePath("../../bum")
+
+[node name="gun_repl" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -62)
+stream = ExtResource("17_2amhx")
+
+[node name="bum" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -92)
+stream = ExtResource("11_aclj4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -326,11 +344,33 @@ scale = Vector2(7.87392, 7.87392)
 texture_normal = SubResource("AtlasTexture_j8a8a")
 texture_pressed = SubResource("AtlasTexture_c1wri")
 
+[node name="gun_r" type="TouchScreenButton" parent="Camera2D/CanvasLayer/mobile"]
+position = Vector2(870, 492)
+scale = Vector2(6, 6)
+texture_normal = SubResource("AtlasTexture_k5314")
+
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D/CanvasLayer"]
 position = Vector2(60, 182)
 shape = SubResource("RectangleShape2D_6m7nj")
 
+[node name="BonusOn4" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+visible = false
+position = Vector2(96, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("5_sai0n")
+region_enabled = true
+region_rect = Rect2(96, 80, 16, 16)
+
+[node name="BonusOn3" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+visible = false
+position = Vector2(36, 372)
+scale = Vector2(3, 3)
+texture = ExtResource("5_sai0n")
+region_enabled = true
+region_rect = Rect2(80, 80, 16, 16)
+
 [node name="BonusOn" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+visible = false
 position = Vector2(34, 264)
 scale = Vector2(3, 3)
 texture = ExtResource("5_sai0n")
@@ -471,4 +511,5 @@ position = Vector2(0, 14)
 [connection signal="analogic_released" from="Camera2D/CanvasLayer/mobile/VirtualJoystick" to="." method="_on_virtual_joystick_analogic_released"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/mobile/fire" to="." method="_on_fire_pressed"]
 [connection signal="released" from="Camera2D/CanvasLayer/mobile/fire" to="." method="_on_fire_released"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/mobile/gun_r" to="." method="_on_gun_r_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

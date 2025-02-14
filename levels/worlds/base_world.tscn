@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtkepgh4c7mdm"]
+
+[ext_resource type="PackedScene" uid="uid://brlwnf83og270" path="res://levels/objects/player.tscn" id="1_hwb31"]
+[ext_resource type="Script" path="res://levels/scripts/system/world_script.gd" id="1_ia4i8"]
+[ext_resource type="PackedScene" uid="uid://dibw4d1q3ue2u" path="res://levels/load_level.tscn" id="2_pxom0"]
+
+[node name="BaseWorld" type="Node2D"]
+script = ExtResource("1_ia4i8")
+
+[node name="Player" parent="." instance=ExtResource("1_hwb31")]
+position = Vector2(603, 330)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LoadLevel" parent="CanvasLayer" instance=ExtResource("2_pxom0")]

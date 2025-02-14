@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ht235lf7wgnx"]
 
 [ext_resource type="Texture2D" uid="uid://bj6i2arbpxkv2" path="res://images/tilesTest.png" id="1_21aco"]
-[ext_resource type="Script" path="res://levels/scripts/bonus1.gd" id="1_cvduw"]
+[ext_resource type="Script" path="res://levels/scripts/bonuses/bonus1.gd" id="1_cvduw"]
 
 [sub_resource type="Gradient" id="Gradient_fb1i4"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)

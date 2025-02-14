@@ -7,9 +7,8 @@
 [node name="SpawnerBadMan" instance=ExtResource("1_sshlp")]
 drop = Array[PackedScene]([ExtResource("2_8cmu0")])
 regular = true
-brackable = false
-col = Vector2(1, 3)
 ranomise_pos = true
+mname = "R"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_g05lr")

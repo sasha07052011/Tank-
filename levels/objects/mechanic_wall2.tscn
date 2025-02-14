@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://bikejsjl5xps0"]
+
+[ext_resource type="Script" path="res://levels/scripts/mechanic_wall_2.gd" id="1_l23mx"]
+[ext_resource type="Texture2D" uid="uid://dis12pd5awllb" path="res://images/mwall.png" id="2_qq8al"]
+[ext_resource type="Texture2D" uid="uid://dmtphw53yqpom" path="res://images/meshanic_walls.png" id="3_aewfo"]
+[ext_resource type="AudioStream" uid="uid://b5ri0rpjkj7uj" path="res://sounds/24f110d27ad0929.mp3" id="4_jgone"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2us8j"]
+atlas = ExtResource("3_aewfo")
+region = Rect2(64, 0, 8, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18b8r"]
+atlas = ExtResource("3_aewfo")
+region = Rect2(48, 0, 8, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tn6v"]
+atlas = ExtResource("3_aewfo")
+region = Rect2(56, 0, 8, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxr7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2us8j")
+}],
+"loop": true,
+"name": &"deactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18b8r")
+}],
+"loop": true,
+"name": &"locked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tn6v")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7shyn"]
+size = Vector2(7, 16)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eyjlb"]
+points = PackedVector2Array(-2, -15, 2, -15, 2, 15, -2, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edb4c"]
+size = Vector2(40, 30)
+
+[node name="MechanicWall" type="StaticBody2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_l23mx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dxr7n")
+animation = &"deactive"
+
+[node name="wall" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("2_qq8al")
+centered = false
+region_enabled = true
+region_rect = Rect2(30, 0, 4, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -16)
+shape = SubResource("RectangleShape2D_7shyn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, 8)
+shape = SubResource("ConvexPolygonShape2D_eyjlb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 8)
+shape = SubResource("RectangleShape2D_edb4c")
+debug_color = Color(0.886275, 0.6, 0.701961, 0.419608)
+
+[node name="ok" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jgone")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

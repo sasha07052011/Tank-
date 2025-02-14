@@ -27,7 +27,8 @@ func _on_area_2d_body_entered(body):
 	if(body is TileMap or body is StaticBody2D or body is TileMapLayer):
 		Kill()
 	if(body is DroppedGenerator):
-		body.kill()
+		if(body.mname!="R"):
+			body.kill()
 		Kill()
 	if(body is Player):
 		body.kill(my_name)
