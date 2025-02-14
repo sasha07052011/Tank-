@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/z_uk-vystrel-s-pistoleta.mp3-6c5418a828d1620e
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=3.3
+bpm=0.0
 beat_count=0
 bar_beats=4
